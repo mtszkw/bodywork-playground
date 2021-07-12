@@ -7,7 +7,7 @@ stages:
 
   1_download_data:
     executable_module_path: turbo_waffle/get_breast_cancer_data.py
-    args: ["data_files", "breast_cancer_data", "breast_cancer_target"]
+    args: ["/tmp/data_files", "breast_cancer_data", "breast_cancer_target"]
     requirements:
       - loguru==0.5.3
       - scikit-learn==0.24.2
@@ -29,7 +29,7 @@ stages:
 
   3_train_random_forest:
     executable_module_path: turbo_waffle/train_random_forest.py
-    args: ["data_files/breast_cancer_data.npy", "data_files/breast_cancer_target.npy"]
+    args: ["/tmp/data_files/breast_cancer_data.npy", "/tmp/data_files/breast_cancer_target.npy"]
     requirements:
       - loguru==0.5.3
       - scikit-learn==0.24.2
