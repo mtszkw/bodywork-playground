@@ -1,0 +1,40 @@
+version: "0.1"
+project:
+  name: turbo-waffle
+  docker_image: bodyworkml/bodywork-core:latest
+  DAG: 1_download_data >> 2_preprocess_data >> 3_train_random_forest
+stages:
+
+  1_download_data:
+    executable_module_path: turbo_waffle/get_breast_cancer_data.py
+    args: ["data_files", "breast_cancer_data", "breast_cancer_target"]
+    requirements:
+      - loguru==0.5.3
+      - scikit-learn = 0.24.2
+    cpu_request: 0.5
+    memory_request_mb: 100
+    batch:
+      max_completion_time_seconds: 30
+      retries: 1
+
+  2_preprocess_data:
+    executable_module_path: turbo_waffle/preprocess_data.py
+    requirements:
+      - loguru==0.5.3
+    cpu_request: 0.25
+    memory_request_mb: 100
+    batch:
+      max_completion_time_seconds: 30
+      retries: 1
+
+  3_train_random_forest:
+    executable_module_path: turbo_waffle/train_random_forest.py
+    args: ["data_files/breast_cancer_data.npy", "data_files/breast_cancer_target.npy"]
+    requirements:
+      - loguru==0.5.3
+      - scikit-learn = 0.24.2
+    cpu_request: 0.75
+    memory_request_mb: 100
+    batch:
+      max_completion_time_seconds: 30
+      retries: 1

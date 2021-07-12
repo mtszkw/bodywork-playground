@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "turbo-waffle"
+version = "0.1.0"
+description = ""
+authors = ["Mateusz Kwasniak <mateusz.kwasniak@pm.me>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+bodywork = "^2.1.7"
+loguru = "^0.5.3"
+scikit-learn = "^0.24.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
