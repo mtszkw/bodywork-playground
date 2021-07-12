@@ -10,7 +10,7 @@ stages:
     args: ["data_files", "breast_cancer_data", "breast_cancer_target"]
     requirements:
       - loguru==0.5.3
-      - scikit-learn = 0.24.2
+      - scikit-learn==0.24.2
     cpu_request: 0.5
     memory_request_mb: 100
     batch:
@@ -32,7 +32,7 @@ stages:
     args: ["data_files/breast_cancer_data.npy", "data_files/breast_cancer_target.npy"]
     requirements:
       - loguru==0.5.3
-      - scikit-learn = 0.24.2
+      - scikit-learn==0.24.2
     cpu_request: 0.75
     memory_request_mb: 100
     batch:
