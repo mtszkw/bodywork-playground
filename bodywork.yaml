@@ -38,3 +38,6 @@ stages:
     batch:
       max_completion_time_seconds: 30
       retries: 1
+
+logging:
+  log_level: INFO
